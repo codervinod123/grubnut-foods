@@ -5,14 +5,17 @@ import Bodyshimmer from './Bodyshimmer';
 import Footer from './Footer';
 
 
-// import IMAGE1 from "../asset/itemimage/dokla.webp";
+import IMAGE1 from "../asset/itemimage/dokla.webp";
+
+
+import {AiTwotoneHeart} from "react-icons/ai"
 
 
 const Offers=()=>{
     return(
         <>
             <div className='flex justify-center gap-2 py-4 border-[1px] border-gray-300 rounded-lg shadow-md'>
-                 <img src="" alt="gh_flag" height={"30px"}/>
+                 <img src={GHFlag} alt="gh_flag" height={"30px"}/>
                  <span className='text-[15px] font-semibold'>Unlock $0 Delivery fees</span>
             </div>
         </>
@@ -21,9 +24,25 @@ const Offers=()=>{
 
 
 const Card=()=>{
+
+
+
+  const [addToCart,setAddToCart]=useState(false);
+
+   const handleAddToCart=()=>{
+       setAddToCart(!addToCart);
+   }
+
+
+
   return(
     <>
-                <div className='border-2 border-gray-300'>
+                <div className='border-2 border-gray-300 rounded'>
+                  <div className='absolute'>
+                      <div className="relative bg-gray-500 p-1 flex  justify-end rounded-full top-[4px] left-[4px] cursor-pointer">
+                        <AiTwotoneHeart onClick={handleAddToCart} className={`text-[25px] ${addToCart?"text-red-500":'text-white'}`}/>
+                      </div>
+                  </div>
                    <div>
                       <img src={IMAGE1} alt="doklaimage" />
                    </div> 
@@ -89,6 +108,8 @@ const Body = () => {
      setShimmer(!shimmer);
   }
   
+  
+
   
   if(shimmer){
   return (

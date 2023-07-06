@@ -14,8 +14,7 @@ import Login from "./components/Login"
 const Applayout=()=>{
   return(
      <>
-      <Header/>
-      <Body/>
+      <Login/>
      </>
 
   )
