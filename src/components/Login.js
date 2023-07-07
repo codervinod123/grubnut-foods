@@ -24,7 +24,7 @@ const Login = () => {
                                    <img className='w-[100px]' src={LOGO} alt="login_logo" />
                                 </div>
                                 <div>
-                                   <ul className='flex gap-[20%]'>
+                                   <ul className='flex gap-[20%] font-semibold text-white'>
                                      <li>Home</li>
                                      <li>About</li>
                                      <li>Contact</li>
@@ -42,8 +42,27 @@ const Login = () => {
                          </header>
 
                          <div className='grid grid-cols-2'>
-                            <div className='px-4'>
-                               <h1>kjhd</h1>
+                            <div className='py-4'>
+                            <form>
+                            <div className='px-4 flex flex-col gap-6'>
+                                    <div className='flex gap-4 '>
+                                       <input className='w-[45%] px-2 py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Enter First Name' type="text" />
+                                       <input className='w-[45%] px-2 py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Enter Last Name' type="text" />
+                                    </div>
+                                    <div className='flex gap-4 '>
+                                       <input className='w-[45%] px-2 py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Enter e-mail' type="email" />
+                                       <input className='w-[45%] px-2 py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Enter Phone' type="phone" />
+                                    </div>
+
+                                    <div className='flex gap-4'>
+                                        <input className='w-[45%]  py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Enter Password' type="password" />
+                                        <input className='w-[45%]  py-1 rounded-sm bg-purple-300 placeholder:text-white' placeholder='Conform Password' type="password" />
+                                    </div>
+                                    <div className='flex justify-center'>
+                                    <button className='bg-gray-600 px-6 rounded-sm py-2'>SUBMIT</button>
+                                    </div>
+                                </div>
+                            </form>
                             </div>
                             <div><img src={Loginbg} alt="loginimage" /></div>
                          </div>
