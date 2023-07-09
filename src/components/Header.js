@@ -9,7 +9,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
-
+import { SiTheregister } from "react-icons/si";
 import { Link } from 'react-router-dom';
 
  
@@ -72,7 +72,9 @@ const Header=()=>{
                      <button className='text-sm text-gray-400'>Catering</button>
                  </div>
                  <div className='cursor-pointer'>
-                   <Link to="/register"><FaUserAlt size={"20px"}/></Link>
+                  <Link to="/register"><SiTheregister size={"20px"}/></Link>
+                 </div>
+                 <div className='cursor-pointer'>
                     <Link to="/login"><FaUserAlt size={"20px"}/></Link>
                  </div>
                  <div className='cursor-pointer flex flex-col items-center'>
