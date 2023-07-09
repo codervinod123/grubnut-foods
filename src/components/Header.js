@@ -10,6 +10,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
 
+import { Link } from 'react-router-dom';
 
  
  
@@ -71,7 +72,7 @@ const Header=()=>{
                      <button className='text-sm text-gray-400'>Catering</button>
                  </div>
                  <div className='cursor-pointer'>
-                    <FaUserAlt size={"20px"}/>
+                    <Link to="/login"><FaUserAlt size={"20px"}/></Link>
                  </div>
                  <div className='cursor-pointer flex flex-col items-center'>
                      <BsFillBagPlusFill size={"20px"} onClick={handleCartClick}/>

@@ -3,7 +3,7 @@ import GHFlag from "../asset/ghflag.svg";
 import Category from "./images";
 import Bodyshimmer from './Bodyshimmer';
 import Footer from './Footer';
-
+import Header from "./Header";
 
 import IMAGE1 from "../asset/itemimage/dokla.webp";
 
@@ -114,6 +114,7 @@ const Body = () => {
   if(shimmer){
   return (
     <div>
+        <Header/>
          <div className='px-14 py-4'>
             <Offers />
          </div>
@@ -126,6 +127,7 @@ const Body = () => {
 else{
   return (
     <>
+        <Header/>
         <div className='px-14 py-4'>
            <Offers/>
         </div>

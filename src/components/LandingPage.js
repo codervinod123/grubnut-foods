@@ -7,6 +7,8 @@ import "./global.css"
 import Footer from './Footer';
 import Login from './Login';
 
+import {Link} from "react-router-dom";
+
 const LandingPage = () => {
     return (
         <>
@@ -27,8 +29,8 @@ const LandingPage = () => {
                         <div className="">
                            
                         <ul className='flex gap-6 justify-end'>
-                                <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Order in the App</li>
-                                <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Sign in</li>
+                                <Link to="/body"><li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Order in the App</li></Link>
+                                <Link to="/login"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Sign in</li></Link>
                             </ul>
 
                         </div>
