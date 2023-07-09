@@ -6,7 +6,7 @@ import {AiOutlineTwitter} from "react-icons/ai";
 import {AiOutlineInstagram} from "react-icons/ai";
 import {Link} from "react-router-dom"
 
-const Login = () => {
+const Register = () => {
 
 
   const handleFormSubmit=()=>{
@@ -35,21 +35,33 @@ const Login = () => {
                                      <li>Carrier</li>
                                    </ul>
                                 </div>
+                                {/* <div>
+                                   <ul className='flex gap-1'>
+                                       <li><AiOutlineInstagram/></li>
+                                       <li><BiLogoFacebook/></li>
+                                       <li><AiOutlineTwitter/></li>
+                                    </ul>
+                                </div> */}
                             </div>
                          </header>
 
                          <div className='flex flex-col'>
                             <div className='py-4'>
                             <form className='flex justify-center items-center'>
-                            <div className='px-[50px] flex flex-col border rounded gap-6 py-[100px] bg-gray-600'>
-                                   
+                            <div className='px-4 flex flex-col border rounded gap-6 py-[100px] bg-gray-600'>
+                                    <div className='flex gap-4 '>
+                                       <input className=' px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter First Name' type="text" />
+                                       <input className=' px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent  focus:outline-none text-white' placeholder='Enter Last Name' type="text" />
+                                    </div>
                                     <div className='flex gap-4 '>
                                        <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter e-mail' type="email" />
+                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter Phone' type="phone" />
                                     </div>
 
                                     <div className='flex gap-4 '>
                                        <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter password' type="email" />
-                                   </div>
+                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Conform password' type="phone" />
+                                    </div>
                                     <div className='flex justify-center'>
                                        <button type='submit' onClick={handleFormSubmit} className='bg-white font-bold text-gray-500 px-6 rounded-sm py-2 hover:bg-gray-400'>SUBMIT</button>
                                     </div>
@@ -66,4 +78,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default Register;

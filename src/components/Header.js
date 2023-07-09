@@ -72,6 +72,7 @@ const Header=()=>{
                      <button className='text-sm text-gray-400'>Catering</button>
                  </div>
                  <div className='cursor-pointer'>
+                   <Link to="/register"><FaUserAlt size={"20px"}/></Link>
                     <Link to="/login"><FaUserAlt size={"20px"}/></Link>
                  </div>
                  <div className='cursor-pointer flex flex-col items-center'>
