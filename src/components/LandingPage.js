@@ -25,7 +25,7 @@ const LandingPage = () => {
 
 
 
-                    <div class="grid h-screen p-8">
+                    <div className="grid h-screen p-8">
                         <div className="">
                            
                         <ul className='flex gap-6 justify-end'>

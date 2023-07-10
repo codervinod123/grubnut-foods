@@ -64,7 +64,7 @@ const Category=()=>{
                  {
                     Images.map((img,index)=>{
                         return(
-                            <div className="flex flex-col gap-[12px]">
+                            <div className="flex flex-col gap-[12px]" key={index}>
                                  <img  src={img} alt={`img${index}`} style={{width:"45px"}} />
                                  <span className="text-xs">{`burger${index}`}</span>
                              </div>

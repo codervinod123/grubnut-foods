@@ -68,7 +68,7 @@ const Cards=()=>{
                     itemsDetails.map((item,index)=>{
                       return( 
                         <>
-                          <Card key={index} items={item}/>
+                          <Card items={item} key={index}/>
                         </>
                       )
                     })
