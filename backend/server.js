@@ -1,28 +1,20 @@
 const express=require("express");
 const app=express();
 
-const cors=require("cors")
 
-
-
-const mongoose = require('mongoose');
-
-mongoose
-  .connect('mongodb://localhost:27017/grubnutdata', {})
-  .then(() => {
-    console.log('Connected successfully to MongoDB');
-  })
-  .catch((error) => {
-    console.log('Error connecting to MongoDB:', error);
-  });
+require("./db/connection")
 
 
 
 
+app.use(express.json());
 app.get('/',(req,res)=>{
-   res.send("Hello from server side");
+
+  res.send("Hello from server side");
 })
 
-app.listen(5000,(req,res)=>{
-  console.log("server is running on port number 5000");
+const PORT=4000;
+
+app.listen(PORT,()=>{
+  console.log(`server is running on port number ${PORT}`);
 })
