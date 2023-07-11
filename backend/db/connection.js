@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/grubnutdata")
+mongoose.connect(process.env.Mongo_URL)
 .then(()=>{
     console.log("succefully connected to the backend");
 })

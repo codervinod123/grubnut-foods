@@ -1,19 +1,24 @@
 const express=require("express");
 const app=express();
 
-
+require('dotenv').config();
 require("./db/connection")
 
 
 
 
-app.use(express.json());
-app.get('/',(req,res)=>{
+const PORT=process.env.PORT || 5000;
 
-  res.send("Hello from server side");
+
+
+app.use(express.json());
+app.use(require("./router/authentication"));
+
+app.get('/',(req,res)=>{
+   res.send("I am Running on server");
 })
 
-const PORT=4000;
+
 
 app.listen(PORT,()=>{
   console.log(`server is running on port number ${PORT}`);
