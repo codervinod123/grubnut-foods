@@ -1,81 +1,161 @@
-import React from 'react'
-import LOGO from "../asset/logo.svg";
-import Login_bg from "../asset/login_bg.jpg";
-import {BiLogoFacebook} from "react-icons/bi";
-import {AiOutlineTwitter} from "react-icons/ai";
-import {AiOutlineInstagram} from "react-icons/ai";
-import {Link} from "react-router-dom"
+import React, { useState} from "react";
+import "./Register.css";
+
+
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
 
+  const navigate = useNavigate();
 
-  const handleFormSubmit=()=>{
-     
-      console.log("form has submitted");
+ 
+//   useEffect(() => {
+//     if(localStorage.getItem("user-logged-in")){
+//       navigate("/chat");
+//     }
+//  },[]);
+  
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+
+    // validation is not working, have to work on it
+
+
+    if(handleValidation()){
+      e.preventDefault();
+      const { name, email, phone, password } = values;
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          password
+        }),
+      });
+
+      const data = await res.json();
+      if (res.status === 400) {
+        toast.error(data.Message,{theme:"dark"});
+      } else {
+
+        localStorage.setItem("user-logged-in",JSON.stringify(data.user));
+        navigate("/login");
+       
+      }
+    }
+};
+
+
+  const handleValidation=()=>{
+     const { name, email, phone, password } = values;
+     if(name.length<=3){
+        toast.error("Name Length is less than 4");
+        return false;
+    }
+   else if(!email)
+   {
+        toast.error("Please Enter the email");
+        return false;
+   }
+   else if(!phone)
+   {
+     toast.error("Please Enter the Mobile number");
+     return false;
+   }
+    else if(password.length<=5)
+    {
+        toast.error("Password is too short");
+        return false;
+    }
+    else
+    return true;
   }
+  
+  
 
   return (
     <>
-        <div className='bg-image w-full h-screen'>
-            <div>
-              
-                <div className=''>
-                  <div className='px-[20%] pb-[40px]'>
-                     <div className='drop-shadow-2xl'>
-                         <header className='py-4 px-4'>
-                            <div className='flex gap-[30%]  items-center'>
-                                <div>
-                                <Link to="/"> <img className='w-[100px]' src={LOGO} alt="login_logo" /></Link>
-                                </div>
-                                <div>
-                                   <ul className='flex gap-[20%] font-semibold text-white'>
-                                     <li>Home</li>
-                                     <li>About</li>
-                                     <li>Contact</li>
-                                     <li>Carrier</li>
-                                   </ul>
-                                </div>
-                                {/* <div>
-                                   <ul className='flex gap-1'>
-                                       <li><AiOutlineInstagram/></li>
-                                       <li><BiLogoFacebook/></li>
-                                       <li><AiOutlineTwitter/></li>
-                                    </ul>
-                                </div> */}
-                            </div>
-                         </header>
+      <div className="register_container">
+        <div className="form_container">
+          
+          
+          {/* <Navbar /> */}
 
-                         <div className='flex flex-col'>
-                            <div className='py-4'>
-                            <form className='flex justify-center items-center'>
-                            <div className='px-4 flex flex-col border rounded gap-6 py-[100px] bg-gray-600'>
-                                    <div className='flex gap-4 '>
-                                       <input className=' px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter First Name' type="text" />
-                                       <input className=' px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent  focus:outline-none text-white' placeholder='Enter Last Name' type="text" />
-                                    </div>
-                                    <div className='flex gap-4 '>
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter e-mail' type="email" />
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter Phone' type="phone" />
-                                    </div>
+          <form onSubmit={(e) => handleSubmit(e)} className="from">
+            <p>START FOR FREE</p>
+            <h2>Create new account</h2>
+            <span>
+              Already A Member ? <Link to="/login">Login</Link>
+            </span>
 
-                                    <div className='flex gap-4 '>
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter password' type="email" />
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Conform password' type="phone" />
-                                    </div>
-                                    <div className='flex justify-center'>
-                                       <button type='submit' onClick={handleFormSubmit} className='bg-white font-bold text-gray-500 px-6 rounded-sm py-2 hover:bg-gray-400'>SUBMIT</button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
-                         </div>
-                     </div>
-                   </div>
-                </div>
+            {/* <div className="details"> */}
+
+            <div className="name">
+              <input
+                type="text"
+                placeholder="Enter User Name"
+                name="name"
+                onChange={(e) => handleChange(e)}
+              />
+
+              <input
+                type="email"
+                placeholder="Enter User Email"
+                name="email"
+                onChange={(e) => handleChange(e)}
+              />
             </div>
+
+            <input
+              type="number"
+              placeholder="Enter User Mobile"
+              name="phone"
+              onChange={(e) => handleChange(e)}
+            />
+
+            <input
+              type="password"
+              placeholder="Enter User Password"
+              name="password"
+              onChange={(e) => handleChange(e)}
+            />
+
+            <div className="btn_container">
+              <button
+                onSubmit={(e) => handleSubmit(e)}
+                className="button create_acc"
+              >
+                Create Account
+              </button>
+            </div>
+          </form>
         </div>
+        <ToastContainer />
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Register;

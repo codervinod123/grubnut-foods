@@ -1,69 +1,86 @@
-import React from 'react'
-import LOGO from "../asset/logo.svg";
-import Login_bg from "../asset/login_bg.jpg";
-import {BiLogoFacebook} from "react-icons/bi";
-import {AiOutlineTwitter} from "react-icons/ai";
-import {AiOutlineInstagram} from "react-icons/ai";
-import {Link} from "react-router-dom"
+import React, {useState,useEffect} from "react";
+import { Link } from "react-router-dom";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
 
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    e.preventDefault();
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
-  const handleFormSubmit=()=>{
-     
-      console.log("form has submitted");
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = values;
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
+    console.log(res);
+
+    const data = await res.json();
+    if (res.status === 400) {
+      console.log("1")
+      toast.error(data.Message, { theme: "dark" });
+    } else {
+          console.log("2")
+          localStorage.setItem("user-lodsdsdgged-in",JSON.stringify(data.user));
+    }
+  };
+
+  
   return (
-    <>
-        <div className='bg-image w-full h-screen'>
-            <div>
-              
-                <div className=''>
-                  <div className='px-[20%] pb-[40px]'>
-                     <div className='drop-shadow-2xl'>
-                         <header className='py-4 px-4'>
-                            <div className='flex gap-[30%]  items-center'>
-                                <div>
-                                <Link to="/"> <img className='w-[100px]' src={LOGO} alt="login_logo" /></Link>
-                                </div>
-                                <div>
-                                   <ul className='flex gap-[20%] font-semibold text-white'>
-                                     <li>Home</li>
-                                     <li>About</li>
-                                     <li>Contact</li>
-                                     <li>Carrier</li>
-                                   </ul>
-                                </div>
-                            </div>
-                         </header>
+    <div className="register_container">
+      <div className="form_container">
+        {/* <Navbar /> */}
+        <form onSubmit={(e) => handleSubmit(e)} className="from">
+          <p>START FOR FREE</p>
+          <h2>Log in account</h2>
+          <span>
+            New Member ? <Link to="/register">Register</Link>
+          </span>
 
-                         <div className='flex flex-col'>
-                            <div className='py-4'>
-                            <form className='flex justify-center items-center'>
-                            <div className='px-[50px] flex flex-col border rounded gap-6 py-[100px] bg-gray-600'>
-                                   
-                                    <div className='flex gap-4 '>
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter e-mail' type="email" />
-                                    </div>
+          <input
+            type="email"
+            placeholder="Enter User Email"
+            name="email"
+            onChange={(e) => handleChange(e)}
+          />
 
-                                    <div className='flex gap-4 '>
-                                       <input className='px-2 py-1 rounded-sm  placeholder:text-white border border-white bg-transparent focus:outline-none text-white' placeholder='Enter password' type="email" />
-                                   </div>
-                                    <div className='flex justify-center'>
-                                       <button type='submit' onClick={handleFormSubmit} className='bg-white font-bold text-gray-500 px-6 rounded-sm py-2 hover:bg-gray-400'>SUBMIT</button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
-                         </div>
-                     </div>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </>
-  )
-}
+          <input
+            type="password"
+            placeholder="Enter User Password"
+            name="password"
+            onChange={(e) => handleChange(e)}
+          />
+
+          <div className="btn_container">
+            {/* <button className='button change_pass' >Change Password</button> */}
+            <button type="submit" className="button create_acc">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+      <ToastContainer />
+    </div>
+  );
+};
 
 export default Login;

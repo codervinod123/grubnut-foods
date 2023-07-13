@@ -7,25 +7,25 @@ const User = require("../model/userschema")
 
 
 router.post('/register', async (req, res) => {
-  const { name, email, phone, password, cpassword } = req.body;
-  if (!name || !email || !phone || !password || !cpassword) {
-    res.status(404).json({ error: "convention is not right" });
+  const { name, email, phone, password } = req.body;
+  if (!name || !email || !phone || !password) {
+    res.status(400).json({ error: "convention is not right" });
   }
 
   try {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
-      return res.status(404).json({ error: "Already Registerd please login" });
+      return res.status(400).json({ Message: "Already Registerd please login", });
     }
 
     const hashedPass = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, phone, password: hashedPass, cpassword: hashedPass });
-    await user.save();
+    const user = new User({ name, email, phone, password: hashedPass });
+    user.save();
     delete user.password;
-    delete user.cpassword;
+   
 
 
-    res.status(201).json({ message: "done bro" });
+    res.status(200).json({ message: "Successfully DONE",user });
 
   } catch (error) {
     console.log(`galti hai kahi na kahi bhai ${error}`);

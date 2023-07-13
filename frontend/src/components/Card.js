@@ -7,26 +7,28 @@ import Header from "./Header";
 import Offers from './Offers';
 import Cake from "../asset/itemimage/cake.webp"
 import IMAGE1 from "../asset/itemimage/dokla.webp";
+import { useNavigate,Link } from 'react-router-dom';
 import {AiTwotoneHeart} from "react-icons/ai"
 
 
 
 
-const Card=({items})=>{
+const Card=({items,index})=>{
 
-   
 
     const [addToCart,setAddToCart]=useState(false);
   
      const handleAddToCart=()=>{
          setAddToCart(!addToCart);
      }
-  
+
+   
   
   
     return(
       <>
-                  <div className='border-2 border-gray-300 rounded'>
+        
+          <div className='border-2 border-gray-300 rounded hover:scale-105 transform transition-all duration-300' key={items.id}>
                     <div className='absolute'>
                         <div className="relative bg-gray-500 p-1 flex  justify-end rounded-full top-[4px] left-[4px] cursor-pointer">
                           <AiTwotoneHeart onClick={handleAddToCart} className={`text-[25px] ${addToCart?"text-red-500":'text-white'}`}/>
@@ -46,7 +48,7 @@ const Card=({items})=>{
                      <div className='pt-2 pb-10 flex px-3 leading-6 justify-between'>
                         <div>
                             <p className='text-[12px] text-gray-900'>{items.ratings} min</p>
-                            <p className='text-[12px] text-gray-700'>${items.price} delivery</p>
+                            <p className='text-[12px] text-gray-700'>₹ {items.price} delivery</p>
                         </div>
                         <div>
                             <p>⭐⭐⭐⭐</p>
@@ -57,6 +59,7 @@ const Card=({items})=>{
                     
   
                   </div>
+         
       </>
     )
   }

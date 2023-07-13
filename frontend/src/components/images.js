@@ -48,10 +48,83 @@ import  IMG45 from "../asset/category/45.svg"
 
 const Images=
 [
-    IMG1,IMG2,IMG3,IMG4 ,IMG5 ,IMG6 ,IMG7 ,IMG8 ,IMG9,IMG10,IMG11,IMG12,IMG13
-    ,IMG14,IMG15,IMG16,
-    IMG17 ,IMG18,IMG19,IMG21,IMG22,IMG23,IMG24,IMG25,IMG26,IMG27,IMG28,IMG29,IMG30,IMG31,IMG32,IMG33,
-    IMG34,IMG35,IMG36,IMG37,IMG38,IMG39,IMG40,IMG41,IMG42,IMG43,IMG44,IMG45
+    
+        {
+          IM:IMG1,
+          name:"Burger",
+        },
+        {
+            IM:IMG2,
+            name:"Tacos",
+          },
+          {
+            IM:IMG4,
+            name:"Pizza",
+          },
+          {
+            IM:IMG5,
+            name:"Noodles",
+          },
+          {
+            IM:IMG6,
+            name:"Fries",
+          },
+          {
+            IM:IMG7,
+            name:"Cake",
+          },{
+            IM:IMG8,
+            name:"HotDog",
+          },
+          {
+            IM:IMG9,
+            name:"Americansub",
+          },
+          {
+            IM:IMG10,
+            name:"Dumpling",
+          },
+          {
+            IM:IMG11,
+            name:"RiceBall",
+          },
+          {
+            IM:IMG12,
+            name:"Chicken",
+          },
+          {
+            IM:IMG13,
+            name:"Omelette",
+          },
+          {
+            IM:IMG14,
+            name:"FullPackage",
+          },
+          {
+            IM:IMG15,
+            name:"lemonpie",
+          },
+          {
+            IM:IMG16,
+            name:"Cupcake",
+          },
+          {
+            IM:IMG17,
+            name:"Icecream",
+          },
+          {
+            IM:IMG18,
+            name:"SubwayBurger",
+          },
+          {
+            IM:IMG40,
+            name:"HaqqaNoodles",
+          },
+          {
+            IM:IMG43,
+            name:"MangoJuice",
+          },
+    
 ];
 
 
@@ -65,8 +138,8 @@ const Category=()=>{
                     Images.map((img,index)=>{
                         return(
                             <div className="flex flex-col gap-[12px]" key={index}>
-                                 <img  src={img} alt={`img${index}`} style={{width:"45px"}} />
-                                 <span className="text-xs">{`burger${index}`}</span>
+                                 <img  src={img.IM} alt={`img${index}`} style={{width:"45px"}} />
+                                 <span className="text-xs">{img.name}</span>
                              </div>
                         )
                     }) 
