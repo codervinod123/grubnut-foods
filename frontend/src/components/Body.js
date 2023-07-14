@@ -24,14 +24,7 @@ import Cards from './Cards';
 const Body = () => {
 
   const [shimmer,setShimmer] = useState(true);
-  const handleClick=()=>{
-     setShimmer(!shimmer);
-  }
-  
-  
-
-  
-  if(shimmer){
+ 
   return (
     <div>
         <Header/>
@@ -44,21 +37,7 @@ const Body = () => {
     </div>
   )
 }
-else{
-  return (
-    <>
-        <Header/>
-        <div className='px-14 py-4'>
-           <Offers/>
-        </div>
-       <Bodyshimmer/>
-       <Footer/>
-    </>
-   )
-}
 
-
-}
 
 export default Body;
 

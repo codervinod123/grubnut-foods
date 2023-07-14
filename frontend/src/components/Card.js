@@ -1,13 +1,6 @@
 import React,{useState} from 'react'
 import GHFlag from "../asset/ghflag.svg";
-import Category from "./images";
-import Bodyshimmer from './Bodyshimmer';
-import Footer from './Footer';
-import Header from "./Header";
-import Offers from './Offers';
-import Cake from "../asset/itemimage/cake.webp"
-import IMAGE1 from "../asset/itemimage/dokla.webp";
-import { useNavigate,Link } from 'react-router-dom';
+
 import {AiTwotoneHeart} from "react-icons/ai"
 
 

@@ -23,12 +23,13 @@ router.post('/register', async (req, res) => {
     user.save();
     delete user.password;
    
-
-
-    res.status(200).json({ message: "Successfully DONE",user });
+     return res.status(200).json({ message: "Successfully DONE",user });
 
   } catch (error) {
+
+    return res.status(400).json({ message: "There is an Error",user });
     console.log(`galti hai kahi na kahi bhai ${error}`);
+  
   }
 })
 

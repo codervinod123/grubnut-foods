@@ -32,7 +32,7 @@ const Login = () => {
       }),
     });
 
-    console.log(res);
+    console.log(`vinod ${res.status} `);
 
     const data = await res.json();
     if (res.status === 400) {
