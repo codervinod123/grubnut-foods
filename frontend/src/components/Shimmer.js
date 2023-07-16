@@ -56,9 +56,11 @@ const Shimmer = () => {
   return (
     <div>
          <div className='px-14 pb-8'><div className='px-12 h-[60px] bg-gray-300 rounded-sm'> </div></div>
-         {emptyArray.map((index)=>{
+         {emptyArray.map((val,index)=>{
             return(
-                <ShimmerCard key={index}/>
+                <div key={index}>
+                  <ShimmerCard />
+                </div>
             )
          })}
     </div>

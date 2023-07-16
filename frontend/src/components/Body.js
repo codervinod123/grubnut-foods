@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import GHFlag from "../asset/ghflag.svg";
-import Category from "./images";
+import Category from "./Category";
 import Bodyshimmer from './Shimmer';
 import Footer from './Footer';
 import Header from "./Header";
@@ -11,14 +11,6 @@ import Offers from './Offers';
 import {AiTwotoneHeart} from "react-icons/ai"
 
 import Cards from './Cards';
-
-
-
-
-
-
-
-
 
 
 const Body = () => {

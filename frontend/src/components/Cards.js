@@ -23,13 +23,14 @@ const filterRestaurant = (searchText, allRestaurants) => {
 
 const Cards=()=>{
 
-   
+    console.log("initially rendered");
     const [searchText,setSearchText]=useState("");
     const [allRestaurants,setAllRestaurants]=useState([]);
     const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
      useEffect(()=>{
           getrestaurant();
+          console.log("useEffect runing")
      },[]);
    
    const getrestaurant=async()=>{
@@ -38,6 +39,7 @@ const Cards=()=>{
            const json=await data.json();
            setAllRestaurants(json.data.cards[2].data.data.cards);
            setFilteredRestaurant(json.data.cards[2].data.data.cards);
+           console.log(json.data.cards[2].data.data.cards);
       } catch (error) {
            console.log("Api can't be calles"+error);
       }
