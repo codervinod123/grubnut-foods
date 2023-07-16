@@ -1,27 +1,50 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Card from './Card';
-import {itemsDetails} from "./Constants";
+import {itemsURL} from "../Config"
+import Shimmer from "./Shimmer";
 
 
 
-const filterRestaurant=(searchText,restaurants)=>{
-  const filtereddata=itemsDetails.filter((restaurants)=>{
-     return restaurants.restaurentName.includes(searchText);
-  })
-   return filtereddata;
-}
+
+
+
+
+
+const filterRestaurant = (searchText, allRestaurants) => {
+  const filteredData = allRestaurants.filter((restaurant) => {
+    return (
+      restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
+  return filteredData;
+};
+
 
 
 const Cards=()=>{
 
-
-    const [searchText,setSearchText]=useState("");
-    const [restaurants,setRestaurants]=useState(itemsDetails);
-
    
+    const [searchText,setSearchText]=useState("");
+    const [allRestaurants,setAllRestaurants]=useState([]);
+    const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
-    
-    return(
+     useEffect(()=>{
+          getrestaurant();
+     },[]);
+   
+   const getrestaurant=async()=>{
+      try {
+           const data=await fetch(itemsURL);
+           const json=await data.json();
+           setAllRestaurants(json.data.cards[2].data.data.cards);
+           setFilteredRestaurant(json.data.cards[2].data.data.cards);
+      } catch (error) {
+           console.log("Api can't be calles"+error);
+      }
+   }
+
+
+    return allRestaurants.length==0?(<Shimmer/>):(
       <>
          <div className='px-14 py-6'>
             <div className="py-2">
@@ -39,21 +62,21 @@ const Cards=()=>{
                 <button 
                    className='border-2 border-gray-400 mx-4' 
                    onClick={(e)=>{
-                          const data=filterRestaurant(searchText,restaurants)
-                          setRestaurants(data);
+                          const data=filterRestaurant(searchText,allRestaurants);
+                          setFilteredRestaurant(data);
                    }}>
                      Search
                 </button>
               </div>
 
               <div className='grid grid-cols-4 gap-6 '>
-                 
+                
                   {
-                    restaurants.map((item,index)=>{
-                      return( 
-                        <>
-                          <Card items={item} index={index} key={index}/>
-                        </>
+                    filteredRestaurant.map((item)=>{
+                      return ( 
+                        <div key={item.data.id}>
+                          <Card item={item}/>
+                        </div>
                       )
                     })
                   }

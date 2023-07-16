@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 import GHFlag from "../asset/ghflag.svg";
 import Category from "./images";
-import Bodyshimmer from './Bodyshimmer';
+import Bodyshimmer from './Shimmer';
 import Footer from './Footer';
 import Header from "./Header";
 import Offers from './Offers';
-import IMAGE1 from "../asset/itemimage/dokla.webp";
+
 
 
 import {AiTwotoneHeart} from "react-icons/ai"

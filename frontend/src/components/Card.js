@@ -6,7 +6,7 @@ import {AiTwotoneHeart} from "react-icons/ai"
 
 
 
-const Card=({items,index})=>{
+const Card=({item})=>{
 
 
     const [addToCart,setAddToCart]=useState(false);
@@ -21,7 +21,7 @@ const Card=({items,index})=>{
     return(
       <>
         
-          <div className='border-2 border-gray-300 rounded hover:scale-105 transform transition-all duration-300' key={items.id}>
+          <div className='border-2 border-gray-300 rounded hover:scale-105 transform transition-all duration-300'>
                     <div className='absolute'>
                         <div className="relative bg-gray-500 p-1 flex  justify-end rounded-full top-[4px] left-[4px] cursor-pointer">
                           <AiTwotoneHeart onClick={handleAddToCart} className={`text-[25px] ${addToCart?"text-red-500":'text-white'}`}/>
@@ -30,22 +30,28 @@ const Card=({items,index})=>{
 
                     <div>
                     <div>
-                        <img src={items.image} alt="doklaimage" />
+                        <img src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${item.data.cloudinaryImageId}`} alt="image" />
                      </div> 
-                     <h1 className='pt-2 px-3 font-semibold'>{items.restaurentName}</h1>
-                     <div className='pt-2 flex gap-2 px-3'>
+                     <h1 className='pt-2 px-3 font-semibold'>{item.data.name}</h1>
+                     <div className='pt-2 flex gap-2 px-3 items-start'>
                          <img src={GHFlag} alt="gh_flag" height={"30px"}/>
-                         <span className='text-[12px] text-gray-700'>{items.Country}</span>
+                         <span className='text-[12px] text-gray-700'>{item.data.cuisines.join(", ")}</span>
                      </div>
   
                      <div className='pt-2 pb-10 flex px-3 leading-6 justify-between'>
-                        <div>
-                            <p className='text-[12px] text-gray-900'>{items.ratings} min</p>
-                            <p className='text-[12px] text-gray-700'>₹ {items.price} delivery</p>
+                        <div className='flex'>
+                            <span>.</span>
+                            <p className='flex bg-green-400 px-2'>{item.data.avgRating}</p>
                         </div>
+
                         <div>
-                            <p>⭐⭐⭐⭐</p>
-                            <p className='text-[14px] text-gray-700'>{items.ratings} ratings</p>
+                            <span>.</span>
+                            <p className='flex'>{item.data.deliveryTime}</p>
+                        </div>
+
+                        <div>
+                            <span>.</span>
+                            <p className='fle'>{item.data.costForTwoString}</p>
                         </div>
                      </div>
                     </div>

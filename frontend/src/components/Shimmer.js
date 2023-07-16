@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Shimmer=()=>{
+const ShimmerCard=()=>{
     return(
         <>
           <div className='px-14 pb-12'>
@@ -50,7 +50,7 @@ const Shimmer=()=>{
     )
 }
 
-const Bodyshimmer = () => {
+const Shimmer = () => {
     const emptyArray = Array.from({ length: 10 });
 
   return (
@@ -58,11 +58,11 @@ const Bodyshimmer = () => {
          <div className='px-14 pb-8'><div className='px-12 h-[60px] bg-gray-300 rounded-sm'> </div></div>
          {emptyArray.map((index)=>{
             return(
-                <Shimmer key={index}/>
+                <ShimmerCard key={index}/>
             )
          })}
     </div>
   )
 }
 
-export default Bodyshimmer
+export default Shimmer;
