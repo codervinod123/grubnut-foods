@@ -1,14 +1,13 @@
 import React from "react"
-import LandingPage from "./components/LandingPage";
-
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-
 import ReactDOM  from "react-dom/client";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Login from "./components/Login"
-import Register from "./components/Register";
 
+import LandingPage from "./components/LandingPage";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+import RestaurantDetails from "./components/RestaurantDetails";
+import PagenotFound from "./components/PagenotFound";
+
+import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
 
 
 
@@ -19,14 +18,8 @@ import Register from "./components/Register";
 const Applayout=()=>{
   return(
      <>
-     <BrowserRouter>
-        <Routes>
-           <Route path="/" element={<LandingPage/>}/>
-           <Route path="/body" element={<Body/>}/>
-           <Route path="/login" element={<Login/>}/>
-           <Route path="/register" element={<Register/>}/>
-        </Routes>
-      </BrowserRouter>
+        <Outlet/>
+        <Footer/>
      </>
 
   )
@@ -35,5 +28,28 @@ const Applayout=()=>{
 
 
 
+const appRouter=createBrowserRouter([
+   {
+      path:"/",
+      element:<Applayout />,
+      errorElement:<PagenotFound/>,
+      children:[
+         {
+            path:"/",
+            element:<LandingPage/>
+         },
+         {
+            path:"/body/",
+            element:<Body/> 
+         },
+         {
+            path:"/restaurantdetails/:id",
+            element:<RestaurantDetails/>
+         }
+        
+      ]
+   }
+])
+
 const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout/>)
+root.render(<RouterProvider router={appRouter}/>)

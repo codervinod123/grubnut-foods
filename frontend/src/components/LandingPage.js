@@ -96,13 +96,6 @@ const LandingPage = () => {
                             <p className='text-[15px] font-normal'>Get more delivery and pickup orders from 31.5 million Grubhub customers hungry for new local restaurants. Sign up with Grubhub for Restaurants to access hassle-free technology and marketing tools that will help you grow your business. It's easy to get started and your first 30 days are free!</p>
                         </div>
                     </div>
-              
-
-
-
-               <Footer/>
-
-
 
             </div>
         </>

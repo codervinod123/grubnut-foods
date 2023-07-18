@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import GHFlag from "../asset/ghflag.svg";
-
+import {imageCDN} from "../Config"
 import {AiTwotoneHeart} from "react-icons/ai"
 
 
@@ -30,7 +30,7 @@ const Card=({item})=>{
 
                     <div>
                     <div>
-                        <img src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${item.data.cloudinaryImageId}`} alt="image" />
+                        <img src={`${imageCDN}${item.data.cloudinaryImageId}`} alt="image" />
                      </div> 
                      <h1 className='pt-2 px-3 font-semibold'>{item.data.name}</h1>
                      <div className='pt-2 flex gap-2 px-3 items-start'>

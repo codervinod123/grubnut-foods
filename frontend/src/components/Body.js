@@ -26,7 +26,6 @@ const Body = () => {
          </div>
          <Category/>
          <Cards/>
-         <Footer/>
     </div>
   )
 }

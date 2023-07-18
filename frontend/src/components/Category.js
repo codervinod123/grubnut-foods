@@ -133,7 +133,7 @@ const Images=
 const Category=()=>{
     return(
         <>
-           <div className='images img px-16 flex  py-4 gap-[55px] overflow-auto'>
+           <div className='category_icons img px-16 flex  py-4 gap-[55px] overflow-auto'>
                  {
                     Images.map((img,index)=>{
                         return(
