@@ -4,7 +4,10 @@ import Category from "./Category";
 import Bodyshimmer from './Shimmer';
 import Footer from './Footer';
 import Header from "./Header";
+
 import Offers from './Offers';
+
+import {Outlet} from "react-router-dom"
 
 
 
@@ -25,7 +28,7 @@ const Body = () => {
             <Offers />
          </div>
          <Category/>
-         <Cards/>
+         <Outlet/>
     </div>
   )
 }

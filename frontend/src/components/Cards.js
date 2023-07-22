@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import Card from './Card';
 import {itemsURL} from "../Config"
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom"
 
 
 
@@ -39,7 +40,7 @@ const Cards=()=>{
            const json=await data.json();
            setAllRestaurants(json.data.cards[2].data.data.cards);
            setFilteredRestaurant(json.data.cards[2].data.data.cards);
-           console.log(json.data.cards[2].data.data.cards);
+            console.log(json.data.cards[2].data.data.cards);
       } catch (error) {
            console.log("Api can't be calles"+error);
       }
@@ -76,9 +77,11 @@ const Cards=()=>{
                   {
                     filteredRestaurant.map((item)=>{
                       return ( 
-                        <div key={item.data.id}>
-                          <Card item={item}/>
-                        </div>
+                       
+                            <div key={item.data.id}>
+                              <Link to={`restaurantdetails/${item.data.id}`}><Card item={item}/> </Link>
+                            </div>
+                    
                       )
                     })
                   }

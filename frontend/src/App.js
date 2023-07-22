@@ -8,7 +8,7 @@ import RestaurantDetails from "./components/RestaurantDetails";
 import PagenotFound from "./components/PagenotFound";
 
 import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
-
+import Cards from "./components/Cards";
 
 
 
@@ -40,12 +40,20 @@ const appRouter=createBrowserRouter([
          },
          {
             path:"/body/",
-            element:<Body/> 
-         },
-         {
-            path:"/restaurantdetails/:id",
-            element:<RestaurantDetails/>
+            element:<Body/> ,
+            children:[
+                {
+                  path:"",
+                  element:<Cards/>
+                },
+
+                 {
+                   path:"restaurantdetails/:id",
+                  element:<RestaurantDetails/>
+                 }
+            ]
          }
+         
         
       ]
    }
