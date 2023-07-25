@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import "./global.css"
 
 import LandingPage from "../components/LandingPage";
@@ -12,8 +12,7 @@ import { GrFormSearch } from "react-icons/gr";
 import { SiTheregister } from "react-icons/si";
 import { Link } from 'react-router-dom';
 
- 
- 
+
 
 const Title=()=>{
     return(
@@ -41,6 +40,21 @@ const Header=()=>{
         console.log(showCart);          
     }
 
+
+    const [isOnline,setIsOnline]=useState(true);
+    
+    useEffect(()=>{
+        window.addEventListener('online',()=>{
+            setIsOnline(true);
+        })
+    
+        window.addEventListener('offline',()=>{
+            setIsOnline(false);
+        })
+    
+        return isOnline;
+        
+    },[])
    
 
     return(
@@ -70,6 +84,7 @@ const Header=()=>{
                  </div>
                  <div>
                      <button className='text-sm text-gray-400'>Catering</button>
+                     <button className='text-sm text-gray-400'>{ isOnline?"Online":"offline" }</button>
                  </div>
                  {/* <div className='cursor-pointer'>
                   <Link to="/register"><SiTheregister size={"20px"}/></Link>

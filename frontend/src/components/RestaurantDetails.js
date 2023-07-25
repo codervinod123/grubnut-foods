@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, {useState,useEffect } from 'react'
 import {useParams} from "react-router-dom"
 import {restaurantDetailsURL} from "../Config";
 
 const RestaurantDetails = () => {
   const {id} =useParams();
-
-
+  const [restaurantDishes,setRestaurantDishes]=useState([]);
+  
   useEffect(()=>{
      getRestaurantDetails();
   },[]);
@@ -18,6 +18,7 @@ const RestaurantDetails = () => {
       const originalArray=json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
       const NewRestaurantDeatils=originalArray.slice(1);
       console.log(NewRestaurantDeatils);
+      setRestaurantDishes(NewRestaurantDeatils);
      } catch (error) {
          console.log("Api can not be called"+error);
      }
@@ -46,6 +47,22 @@ const RestaurantDetails = () => {
                 </div>
 
             </div>
+           
+            
+
+
+{restaurantDishes.map((item, index) => {
+        return (
+          <div key={index}>
+              <h1>
+                  {
+                     console.log(item)
+                  }
+              </h1>
+          </div>
+        );
+      })}
+
 
         </div>
       </div>  
