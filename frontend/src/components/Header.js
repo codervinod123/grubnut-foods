@@ -1,16 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import "./global.css"
 
-import LandingPage from "../components/LandingPage";
 import Logo from "../asset/GH_logo_svg.svg";
-import { MdOutlineFoodBank } from "react-icons/md";
-import { IoLocation } from "react-icons/io";
 import { BiTimeFive } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
+
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
-import { SiTheregister } from "react-icons/si";
-import { Link } from 'react-router-dom';
+
+import useOnline from "../utils/useIsOnline"
+
 
 
 
@@ -27,6 +25,8 @@ const Title=()=>{
 
 const Header=()=>{
 
+    const isOnline =useOnline(); 
+
     const [buttonBG, setButtonBG] = useState(false);
     const handleClick=()=>{
         setButtonBG(!buttonBG);
@@ -41,20 +41,28 @@ const Header=()=>{
     }
 
 
-    const [isOnline,setIsOnline]=useState(true);
     
-    useEffect(()=>{
-        window.addEventListener('online',()=>{
-            setIsOnline(true);
-        })
     
-        window.addEventListener('offline',()=>{
-            setIsOnline(false);
-        })
+    // useEffect(()=>{
+
+    //     const handleOnline=()=>{
+    //         setIsOnline(true);
+    //     }
+
+    //     const handleOffline=()=>{
+    //         setIsOnline(false);
+    //     }
+
+    //     window.addEventListener('online',handleOnline)
     
-        return isOnline;
+    //     window.addEventListener('offline',handleOffline)
+    
+    //     return()=>{
+    //        window.removeEventListener('online',handleOnline);
+    //        window.removeEventListener('offline',handleOffline);
+    //     } 
         
-    },[])
+    // },[])
    
 
     return(
@@ -84,7 +92,7 @@ const Header=()=>{
                  </div>
                  <div>
                      <button className='text-sm text-gray-400'>Catering</button>
-                     <button className='text-sm text-gray-400'>{ isOnline?"Online":"offline" }</button>
+                     <button className='text-sm text-gray-400'>{isOnline?"online":"offline"}</button>
                  </div>
                  {/* <div className='cursor-pointer'>
                   <Link to="/register"><SiTheregister size={"20px"}/></Link>

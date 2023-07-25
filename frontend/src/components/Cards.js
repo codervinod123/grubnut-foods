@@ -3,9 +3,6 @@ import Card from './Card';
 import {itemsURL} from "../Config"
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom"
-
-
-
 import {filterRestaurant} from "../utils/Filterdata"
 
 
@@ -31,9 +28,9 @@ const Cards=()=>{
       try {
            const data=await fetch(itemsURL);
            const json=await data.json();
-           setAllRestaurants(json.data.cards[2].data.data.cards);
-           setFilteredRestaurant(json.data.cards[2].data.data.cards);
-            console.log(json.data.cards[2].data.data.cards);
+           setAllRestaurants(json.data.cards[0].data.data.cards);
+           setFilteredRestaurant(json.data.cards[0].data.data.cards);
+            console.log(json.data.cards[0].data.data.cards);
       } catch (error) {
            console.log("Api can't be calles"+error);
       }
