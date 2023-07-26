@@ -54,11 +54,23 @@ const RestaurantDetails = () => {
 {restaurantDishes.map((item, index) => {
         return (
           <div key={index}>
-              <h1>
+              <div key={index}>
                   {
-                     console.log(item)
+                    item?.card?.card?.itemCards &&  item?.card?.card?.itemCards.map((items,index)=>{
+                    return(
+                       <div  key={index}>
+
+                        <div className='flex justify-center'>
+                            <div>
+                               <h1>{items.card.info.name}</h1>
+                            </div>
+                        </div>
+                         
+                       </div>
+                    )
+                    })
                   }
-              </h1>
+              </div>
           </div>
         );
       })}

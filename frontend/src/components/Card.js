@@ -30,28 +30,28 @@ const Card=({item})=>{
 
                     <div>
                     <div>
-                        <img src={`${imageCDN}${item.data.cloudinaryImageId}`} alt="image" />
+                        <img src={`${imageCDN}${item.info.cloudinaryImageId}`} alt="image" />
                      </div> 
-                     <h1 className='pt-2 px-3 font-semibold'>{item.data.name}</h1>
+                     <h1 className='pt-2 px-3 font-semibold'>{item.info.name}</h1>
                      <div className='pt-2 flex gap-2 px-3 items-start'>
                          <img src={GHFlag} alt="gh_flag" height={"30px"}/>
-                         <span className='text-[12px] text-gray-700'>{item.data.cuisines.join(", ")}</span>
+                         <span className='text-[12px] text-gray-700'>{item.info.cuisines.join(", ")}</span>
                      </div>
   
                      <div className='pt-2 pb-10 flex px-3 leading-6 justify-between'>
                         <div className='flex'>
                             <span>.</span>
-                            <p className='flex bg-green-400 px-2'>{item.data.avgRating}</p>
+                            <p className='flex bg-green-400 px-2'>{item.info.avgRating}</p>
                         </div>
 
                         <div>
                             <span>.</span>
-                            <p className='flex'>{item.data.deliveryTime}</p>
+                            <p className='flex'>{item.info.deliveryTime}</p>
                         </div>
 
                         <div>
                             <span>.</span>
-                            <p className='fle'>{item.data.costForTwoString}</p>
+                            <p className='fle'>{item.info.costForTwoString}</p>
                         </div>
                      </div>
                     </div>

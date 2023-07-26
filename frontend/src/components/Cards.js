@@ -28,9 +28,9 @@ const Cards=()=>{
       try {
            const data=await fetch(itemsURL);
            const json=await data.json();
-           setAllRestaurants(json.data.cards[0].data.data.cards);
-           setFilteredRestaurant(json.data.cards[0].data.data.cards);
-            console.log(json.data.cards[0].data.data.cards);
+           setAllRestaurants(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+           setFilteredRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+            console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
       } catch (error) {
            console.log("Api can't be calles"+error);
       }
@@ -68,8 +68,8 @@ const Cards=()=>{
                     filteredRestaurant.map((item)=>{
                       return ( 
                        
-                            <div key={item.data.id}>
-                              <Link to={`restaurantdetails/${item.data.id}`}><Card item={item}/> </Link>
+                            <div key={item.info.id}>
+                              <Link to={`restaurantdetails/${item.info.id}`}><Card item={item}/> </Link>
                             </div>
                     
                       )
