@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import "./global.css"
 
 import Logo from "../asset/GH_logo_svg.svg";
@@ -8,8 +8,9 @@ import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
 
 import useOnline from "../utils/useIsOnline"
+import userContext from '../utils/userContext';
 
-
+// const {user}=useContext(userContext());
 
 
 const Title=()=>{
@@ -25,6 +26,7 @@ const Title=()=>{
 
 const Header=()=>{
 
+   
     const isOnline =useOnline(); 
 
     const [buttonBG, setButtonBG] = useState(false);

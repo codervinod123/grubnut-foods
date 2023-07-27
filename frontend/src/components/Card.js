@@ -32,26 +32,29 @@ const Card=({item})=>{
                     <div>
                         <img src={`${imageCDN}${item.info.cloudinaryImageId}`} alt="image" />
                      </div> 
-                     <h1 className='pt-2 px-3 font-semibold'>{item.info.name}</h1>
+                    
+                     <div className='flex justify-between'>
+                        <h1 className='pt-2 px-3 font-semibold'>{item.info.name}</h1>
+                        <button className='px-4  border border-gray-300 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
+                     </div>
+
                      <div className='pt-2 flex gap-2 px-3 items-start'>
-                         <img src={GHFlag} alt="gh_flag" height={"30px"}/>
                          <span className='text-[12px] text-gray-700'>{item.info.cuisines.join(", ")}</span>
                      </div>
   
                      <div className='pt-2 pb-10 flex px-3 leading-6 justify-between'>
-                        <div className='flex'>
-                            <span>.</span>
-                            <p className='flex bg-green-400 px-2'>{item.info.avgRating}</p>
+                        <div className='flex '>
+                            <div className={` ${item.info.avgRating<4 ? "bg-orange-400" : "bg-green-400"} px-2 py-[1px] flex items-center gap-[1px]`}><span className='text-white'>☆</span><span className='flex text-sm text-gray-500' >{item.info.avgRating}</span></div>
                         </div>
 
-                        <div>
-                            <span>.</span>
-                            <p className='flex'>{item.info.deliveryTime}</p>
+                        <div  className='flex items-center justify-center gap-2'>
+                            <span className='text-sm font-bold'>.</span>
+                            <p className='flex text-sm text-gray-500'>{item.info.sla.slaString}</p>
                         </div>
 
-                        <div>
-                            <span>.</span>
-                            <p className='fle'>{item.info.costForTwoString}</p>
+                        <div  className='flex items-center justify-center gap-2'>
+                            <span className='text-sm font-bold'>.</span>
+                            <p>{item.info.costForTwo}</p>
                         </div>
                      </div>
                     </div>
