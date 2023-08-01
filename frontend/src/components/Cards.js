@@ -1,10 +1,10 @@
-import React,{useEffect, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import Card from './Card';
 import {itemsURL} from "../Config"
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom"
 import {filterRestaurant} from "../utils/Filterdata"
-
+import UserContext from '../utils/userContext';
 
 
 
@@ -13,7 +13,9 @@ import {filterRestaurant} from "../utils/Filterdata"
 
 
 const Cards=()=>{
-
+   
+    const {user,setUser}=useContext(UserContext);
+    
     console.log("initially rendered");
     const [searchText,setSearchText]=useState("");
     const [allRestaurants,setAllRestaurants]=useState([]);
@@ -60,6 +62,20 @@ const Cards=()=>{
                    }}>
                      Search
                 </button>
+
+                <input 
+                    className='border-2 border-gray-400' 
+                    type='text' 
+                    placeholder="search"
+                    value={user.email}
+                    onChange={(e)=>{
+                        setUser({email:e.target.value});
+                    }}
+                />
+
+             
+
+
               </div>
 
               <div className='grid grid-cols-4 gap-6 '>

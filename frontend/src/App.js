@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react"
+import React, { lazy,Suspense,useState,Provider } from "react"
 import ReactDOM  from "react-dom/client";
 
 import LandingPage from "./components/LandingPage";
@@ -11,6 +11,7 @@ import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
 import Cards from "./components/Cards";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import UserContext from "./utils/userContext";
 
 // import Instamart from "./components/Instamart";
 const Instamart=lazy(() => import("./components/Instamart"));
@@ -21,11 +22,22 @@ const Instamart=lazy(() => import("./components/Instamart"));
 
 
 
+
 const Applayout=()=>{
+ 
+   const [user,setUser]=useState({
+      name:"manoj",
+      email:"pmp@gmail.com"
+   })
+
   return(
      <>
-        <Outlet/>
-        <Footer/>
+
+        <UserContext.Provider value={{user:user,setUser:setUser}}>
+           <Outlet/>
+           <Footer/>
+        </UserContext.Provider>
+      
      </>
 
   )

@@ -1,9 +1,16 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import UserContext from '../utils/userContext';
+
 
 const Footer = () => {
+
+    const {user}=useContext(UserContext);
+
     return (
         <>
             <footer>
+
+                <h1>{user.email}</h1>
 
                 <div className='p-8 bg-slate-200'>
                     <div className='grid grid-cols-2 px-8'>

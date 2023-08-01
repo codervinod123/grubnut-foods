@@ -1,5 +1,6 @@
-import React,{useState,useEffect,useContext} from 'react'
-import "./global.css"
+import React,{useState,useEffect,useContext} from 'react';
+import "./global.css";
+
 
 import Logo from "../asset/GH_logo_svg.svg";
 import { BiTimeFive } from "react-icons/bi";
@@ -7,12 +8,11 @@ import { BiTimeFive } from "react-icons/bi";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
 
-import useOnline from "../utils/useIsOnline"
-import userContext from '../utils/userContext';
+import useOnline from "../utils/useIsOnline";
+
 import { Link } from 'react-router-dom';
 
-// const {user}=useContext(userContext());
-
+import userContext from '../utils/userContext';
 
 const Title=()=>{
     return(
@@ -27,6 +27,9 @@ const Title=()=>{
 
 const Header=()=>{
 
+
+    const {user}=useContext(userContext);
+    console.log(user.email);
    
     const isOnline =useOnline(); 
 
@@ -84,7 +87,12 @@ const Header=()=>{
                  <div className='flex items-center justify-center'>
                      <button className='border  gap-5 border-gray-400 rounded-full p-[3px] px-2 flex items-center justify-center text-sm font-bold text-gray-600'><span><BiTimeFive size={"24px"}/></span>Now</button>
                  </div>
+                 <h1>{user.email}</h1>
             </div>
+
+            
+
+            
 
             <div className="flex justify-between px-4 items-center">
                  <div>
@@ -98,7 +106,7 @@ const Header=()=>{
                      <button className='text-sm text-gray-400'>{isOnline?"online":"offline"}</button>
                  </div>
                 <span> <Link to="instamart">Instamart</Link></span>
-
+                
 
                  {/* <div className='cursor-pointer'>
                   <Link to="/register"><SiTheregister size={"20px"}/></Link>
