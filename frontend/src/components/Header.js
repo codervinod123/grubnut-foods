@@ -9,6 +9,7 @@ import { GrFormSearch } from "react-icons/gr";
 
 import useOnline from "../utils/useIsOnline"
 import userContext from '../utils/userContext';
+import { Link } from 'react-router-dom';
 
 // const {user}=useContext(userContext());
 
@@ -96,6 +97,9 @@ const Header=()=>{
                      <button className='text-sm text-gray-400'>Catering</button>
                      <button className='text-sm text-gray-400'>{isOnline?"online":"offline"}</button>
                  </div>
+                <span> <Link to="instamart">Instamart</Link></span>
+
+
                  {/* <div className='cursor-pointer'>
                   <Link to="/register"><SiTheregister size={"20px"}/></Link>
                  </div>

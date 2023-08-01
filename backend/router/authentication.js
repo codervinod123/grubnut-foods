@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
 
   } catch (error) {
 
-    return res.status(400).json({ message: "There is an Error",user });
+    return res.status(400).json({ message: "There is an Error"});
     console.log(`galti hai kahi na kahi bhai ${error}`);
   
   }

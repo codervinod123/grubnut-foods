@@ -55,7 +55,7 @@ const Register = () => {
         }),
       });
 
-      const data = await res.json();
+      const data = await res.json;
       if (res.status === 400) {
         toast.error(data.Message,{theme:"dark"});
       } else {

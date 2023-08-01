@@ -1,4 +1,4 @@
-import React from "react"
+import React, { lazy,Suspense } from "react"
 import ReactDOM  from "react-dom/client";
 
 import LandingPage from "./components/LandingPage";
@@ -9,6 +9,12 @@ import PagenotFound from "./components/PagenotFound";
 
 import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
 import Cards from "./components/Cards";
+import Login from "./components/Login";
+import Register from "./components/Register";
+
+// import Instamart from "./components/Instamart";
+const Instamart=lazy(() => import("./components/Instamart"));
+
 
 
 
@@ -36,7 +42,7 @@ const appRouter=createBrowserRouter([
       children:[
          {
             path:"/",
-            element:<LandingPage/>
+            element:<LandingPage/>,
          },
          {
             path:"/body/",
@@ -47,13 +53,26 @@ const appRouter=createBrowserRouter([
                   element:<Cards/>
                 },
 
-                 {
+                {
                    path:"restaurantdetails/:id",
                   element:<RestaurantDetails/>
+                 },
+
+                 {
+                   path:"instamart",
+                   element:<Suspense><Instamart/></Suspense>
                  }
             ]
-         }
+         },
+         {
+            path:"login",
+            element:<Login/>
+         },
          
+         {
+            path:"register",
+            element:<Register/>
+         }
         
       ]
    }
