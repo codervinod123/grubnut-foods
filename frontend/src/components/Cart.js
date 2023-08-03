@@ -1,0 +1,44 @@
+import React from 'react'
+import {useSelector} from "react-redux"
+
+const Cart = () => {
+
+    const cartItem=useSelector(store=>store.cart.items);
+    console.log(cartItem);
+
+  return (
+    <div>
+        {
+       cartItem.map((items,index)=>{
+                 return(
+
+                     items.card.info.imageId &&
+                       <div key={index} className=' px-32 '>
+
+                        <div className='flex border-b-2 border-gray-300 py-8 gap-32'>
+                            <div className='w-[60%]'>
+                               <div>
+                                 <h1 className='text-lg font-bold text-gray-700'>{items.card.info.name}</h1>
+                                 <p>{`₹ ${items.card.info.price/100}`}</p>
+                               </div>
+
+                               <div className='py-3'>
+                                 <p className='text-sm text-gray-500'>{items.card.info.description}</p>
+                               </div>
+                               
+                            </div>
+                            <div>
+                                <img className='rounded-lg absolute border-2 border-gray-400' width={180} src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${items.card.info.imageId}`} alt="" />
+                                <button onClick={()=>handleAddItem(items)}  className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
+                            </div>
+                        </div>
+                         
+                       </div>
+                    )
+                    })
+                }    
+    </div>
+  )
+}
+
+export default Cart

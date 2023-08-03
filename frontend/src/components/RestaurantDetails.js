@@ -4,6 +4,8 @@ import {restaurantDetailsURL} from "../Config";
 
 import Shimmer from './Shimmer';
 import MenuShimmer from './MenuShimmer';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 
 const filterData=(searchText,restaurantDishes)=>{
@@ -24,6 +26,10 @@ const RestaurantDetails = () => {
      getRestaurantDetails();
   },[]);
 
+  const dispatch=useDispatch();
+  const handleAddItem=(items)=>{
+    dispatch(addItem(items));
+  }
 
   const getRestaurantDetails=async()=>{
      try {
@@ -97,7 +103,7 @@ const RestaurantDetails = () => {
                             </div>
                             <div>
                                 <img className='rounded-lg absolute border-2 border-gray-400' width={180} src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${items.card.info.imageId}`} alt="" />
-                                <button className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
+                                <button onClick={()=>handleAddItem(items)}  className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
                             </div>
                         </div>
                          

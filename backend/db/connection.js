@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose=require("mongoose");
 
-mongoose.set("strictQuery", false);
-mongoose.connect(process.env.Mongo_URL)
-.then(()=>{
-    console.log("succefully connected to the backend");
+const url=process.env.Mongo_URL;
+
+mongoose.set("strictQuery",false);
+mongoose.connect(url).
+then(()=>{
+console.log("Database is connected successfully");
+}).catch((err)=>{
+   console.log(`Error has occured ${err}`);
 })
-.catch((err)=>{
-    console.log(`here is some preoblem in connection ofdatabase ${err}`);
-});

@@ -4,13 +4,12 @@ import UserContext from '../utils/userContext';
 
 const Footer = () => {
 
-    const {user}=useContext(UserContext);
 
     return (
         <>
             <footer>
 
-                <h1>{user.email}</h1>
+             
 
                 <div className='p-8 bg-slate-200'>
                     <div className='grid grid-cols-2 px-8'>
@@ -36,7 +35,7 @@ const Footer = () => {
                             {/* part 1 */}
                             <div className='text-white px-2 flex flex-col gap-4'>
                                 <div>
-                                    <h1 className='font-bold font-medium text-lg text-[16px]'>Sign up for special offers</h1>
+                                    <h1 className='font-bold text-lg text-[16px]'>Sign up for special offers</h1>
                                 </div>
                                 <div className='flex flex-col gap-3'>
                                     <h1 className='font-bold'>

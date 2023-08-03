@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 
 import userContext from '../utils/userContext';
 
+import {useSelector} from "react-redux"
+
 const Title=()=>{
     return(
         <>
@@ -26,6 +28,9 @@ const Title=()=>{
 }
 
 const Header=()=>{
+
+    const cartItem=useSelector(store=>store.cart.items);
+
 
 
     const {user}=useContext(userContext);
@@ -114,9 +119,8 @@ const Header=()=>{
                  <div className='cursor-pointer'>
                     <Link to="/login"><FaUserAlt size={"20px"}/></Link>
                  </div> */}
-                 <div className='cursor-pointer flex flex-col items-center'>
-                     <BsFillBagPlusFill size={"20px"} onClick={handleCartClick}/>
-                 </div>
+                 <span> <Link to="cart">Cart {cartItem.length}</Link></span>
+                
                     
             </div>
         </div>

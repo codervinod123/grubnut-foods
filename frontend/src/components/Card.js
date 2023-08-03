@@ -35,7 +35,7 @@ const Card=({item})=>{
                     
                      <div className='flex justify-between'>
                         <h1 className='pt-2 px-3 font-semibold'>{item.info.name}</h1>
-                        <button className='px-4  border border-gray-300 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
+                        {/* <button className='px-4  border border-gray-300 rounded text-green-500 font-bold bg-gray-100'>ADD</button> */}
                      </div>
 
                      <div className='pt-2 flex gap-2 px-3 items-start'>
