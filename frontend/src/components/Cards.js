@@ -39,12 +39,40 @@ const Cards=()=>{
    }
 
 
+   const handleFilter=(order)=>{
+      if(order===1){
+        
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.avgRating - b.info.avgRating);
+        setFilteredRestaurant(sortedRestaurantsAscending);
+
+      }
+      else if(order===2){
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) =>  b.info.avgRating - a.info.avgRating);
+        setFilteredRestaurant(sortedRestaurantsAscending);
+      }
+      else if(order===3){
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
+        setFilteredRestaurant(sortedRestaurantsAscending);
+      }
+
+      else if(order==4){
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
+        setFilteredRestaurant(sortedRestaurantsAscending);
+      }
+
+      else if(order==5){
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
+        setFilteredRestaurant(sortedRestaurantsAscending);
+      }
+
+   } 
+
     return allRestaurants.length==0?(<Shimmer/>):(
       <>
          <div className='px-14 py-6'>
             <div className="py-2">
                
-              <div className='py-4'>
+              <div className='py-4 flex'>
                  <input 
                     className='border-2 border-gray-400' 
                     type='text' 
@@ -63,6 +91,8 @@ const Cards=()=>{
                      Search
                 </button>
 
+
+
                 <input 
                     className='border-2 border-gray-400' 
                     type='text' 
@@ -73,7 +103,18 @@ const Cards=()=>{
                     }}
                 />
 
-             
+          <div className='mx-8 flex gap-4'>
+               
+           <button onClick={()=>handleFilter(1)} className='bg-purple-300'>Popularity</button>
+           <button onClick={()=>handleFilter(2)}  className='bg-purple-300'>Rating: High to Low</button>
+           <button onClick={()=>handleFilter(3)}  className='bg-purple-300'>Delivery Time</button>
+           <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
+           <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button>
+           
+          </div>
+
+
+
 
 
               </div>

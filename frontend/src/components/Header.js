@@ -19,10 +19,12 @@ import {useSelector} from "react-redux"
 const Title=()=>{
     return(
         <>
+        <Link to="/">
            <div className="flex text-sm text-white px-12">
                {/* <MdOutlineFoodBank className="text-orange-500"/> */}
                <img width={96} src={Logo} alt="logo" />
            </div>
+         </Link>
         </>
     )
 }

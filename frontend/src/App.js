@@ -41,10 +41,10 @@ const Applayout=()=>{
   return(
      <>
         <Provider store={store}>
-        <UserContext.Provider value={{user:user,setUser:setUser}}>
+         <UserContext.Provider value={{user:user,setUser:setUser}}>
            <Outlet/>
            <Footer/>
-        </UserContext.Provider>
+         </UserContext.Provider>
         </Provider>
      </>
 

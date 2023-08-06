@@ -17,6 +17,8 @@ const filterData=(searchText,restaurantDishes)=>{
 const RestaurantDetails = () => {
   const {id} =useParams();
 
+  const [AddedToCart,setAddedToCart]=useState(false);
+
   const [searchText,setSearchText]=useState("");
   console.log(searchText);
   const [restaurantDishes,setRestaurantDishes]=useState([]);
@@ -27,9 +29,16 @@ const RestaurantDetails = () => {
   },[]);
 
   const dispatch=useDispatch();
+
   const handleAddItem=(items)=>{
+    setAddedToCart(!AddedToCart);
     dispatch(addItem(items));
   }
+  
+  const handleRemoveItem=()=>{
+     setAddedToCart(!AddedToCart);
+  }
+
 
   const getRestaurantDetails=async()=>{
      try {
@@ -56,21 +65,46 @@ const RestaurantDetails = () => {
                <input onKeyUp={()=>filterData(searchText,filterArr)} onChange={(e)=>{setSearchText(e.target.value)}} className='border border-gray-400 rounded-full px-8 py-2 focus:outline-none' type="text" placeholder='search For dish'/>
             </div>
 
-            <div className='border-b border-dashed flex justify-between px-16 py-8'>
-
-                <div>
-                   <p className='text-lg font-bold'>Leon's - Burgers & Wings (Leon Grill)</p>
-                   <p className='text-sm text-gray-500'>American Snaxks</p>
-                   <p className='text-sm text-gray-500'>Area and Distance</p>
-                </div>
-                <div className='border-[1px] border-green-500 rounded'>
-                   <div className="bg-gray-200 px-2 py-[1px] flex items-center gap-[1px]"><span className='text-green-400'>☆</span><span className='flex text-sm text-gray-500' >4.4</span></div>
-                   <p className='text-sm font-bold border-t-2 border-black flex justify-center items-center'>10K Ratings</p>
-                </div>
-
-            </div>
+            
          </div>
            
+
+          <div className='px-16 my-4'>
+            <div className='border-b border-dashed flex flex-col mx-16 bg-gray-800 px-16 py-8 text-white'>
+
+              <div className='flex gap-12'>
+              <div>
+                <img width={300} src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bzupoiynxjbgogvumixa" alt="" />
+              </div>
+              <div className='flex flex-col gap-14 items-center'>
+
+                <div>
+                  <p className='text-xl font-bold'>Leon's - Burgers & Wings (Leon Grill)</p>
+                  <p className='text-lg pt-4'>American Snaxks</p>
+                </div>
+  
+                <div className='flex gap-12'>
+                 <div>
+                    <h1>4.3 Satrs</h1>
+                    <h1>10K+ Ratings</h1>
+                 </div>
+                 <div className='border-r-2 border-l-2 border-white px-6'>
+                    <h1>Delivery Time</h1>
+                 </div>
+                 <div>
+                    <h1>200</h1>
+                    <h1>Cost for two</h1>
+                 </div>
+              </div>
+
+
+              </div>
+              </div>
+
+            
+
+            </div>
+           </div>
             
 
 
@@ -103,7 +137,32 @@ const RestaurantDetails = () => {
                             </div>
                             <div>
                                 <img className='rounded-lg absolute border-2 border-gray-400' width={180} src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${items.card.info.imageId}`} alt="" />
-                                <button onClick={()=>handleAddItem(items)}  className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>ADD</button>
+                                
+                                
+                               {/* {
+                                
+                                AddedToCart?
+
+                                <button 
+                                onClick={()=>handleRemoveItem(items)}
+                                className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>
+                                   Remove
+                               </button>: */}
+
+                                <button 
+                                     onClick={()=>handleAddItem(items)}
+                                     className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>
+                                        ADD
+                                </button>
+
+                                
+                                
+                                {/* } */}
+
+
+
+
+
                             </div>
                         </div>
                          

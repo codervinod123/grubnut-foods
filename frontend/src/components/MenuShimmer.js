@@ -26,11 +26,11 @@ const MenuShimmer=()=>{
     return(
       <>
        {
-          emptyArray.map(()=>{
+          emptyArray.map((item,index)=>{
             return(
-              <>
+              <div  key={index}>
                 <Shimmer/>
-              </>
+              </div>
             )
           }) 
        }

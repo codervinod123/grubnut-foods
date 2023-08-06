@@ -20,7 +20,6 @@ const Cart = () => {
     const handleRemoveItem=(id)=>{
        console.log(`remove one by one ${id}`);
        dispatch(removeItem(id));
-      //  console.log(cartItems);
     }
 
 
