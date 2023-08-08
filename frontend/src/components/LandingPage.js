@@ -30,7 +30,7 @@ const LandingPage = () => {
                            
                         <ul className='flex gap-6 justify-end'>
                                 <Link to="/body"><li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Order in the App</li></Link>
-                                <Link to="/login"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Sign in</li></Link>
+                                {/* <Link to="/login"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Sign in</li></Link> */}
                             </ul>
 
                         </div>

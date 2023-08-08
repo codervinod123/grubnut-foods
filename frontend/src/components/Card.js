@@ -44,7 +44,7 @@ const Card=({item})=>{
   
                      <div className='pt-2 pb-10 flex px-3 leading-6 justify-between'>
                         <div className='flex '>
-                            <div className={` ${item.info.avgRating<4 ? "bg-orange-400" : "bg-green-400"} px-2 py-[1px] flex items-center gap-[1px]`}><span className='text-white'>☆</span><span className='flex text-sm text-gray-500' >{item.info.avgRating}</span></div>
+                            <div className={` ${item.info.avgRating<4 ? "bg-orange-500" : "bg-green-500"} px-2 py-[1px] flex items-center gap-[1px]`}><span className='text-white'>☆</span><span className='flex text-sm text-gray-500' >{item.info.avgRating}</span></div>
                         </div>
 
                         <div  className='flex items-center justify-center gap-2'>

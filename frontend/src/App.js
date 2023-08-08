@@ -16,6 +16,8 @@ import UserContext from "./utils/userContext";
 import {Provider, Provider} from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import About from "./components/About";
+import Help from "./components/Help";
 
 
 
@@ -85,6 +87,14 @@ const appRouter=createBrowserRouter([
                  {
                   path:"cart",
                   element:<Cart/>
+                },
+                {
+                  path:"about",
+                  element:<About/>
+                },
+                {
+                  path:"help",
+                  element:<Help/>
                 }
             ]
          },

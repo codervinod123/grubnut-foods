@@ -3,6 +3,8 @@ import {useSelector} from "react-redux"
 import {useDispatch} from "react-redux"
 import { clearCart } from '../utils/cartSlice'
 import { removeItem } from '../utils/cartSlice'
+import EmptyCart from './EmptyCart'
+
 
 const Cart = () => {
 
@@ -23,9 +25,9 @@ const Cart = () => {
     }
 
 
-  return (
+  return dataOfCart.length==0? <EmptyCart/> :(
     <div>
-      <button onClick={()=>handleClearCart()} className='px-2 bg-purple-600  py-1 rounded'>Click me</button>
+      {dataOfCart.length>0?<button onClick={()=>handleClearCart()} className='px-2 mx-32 bg-red-500  py-1 rounded text-white font-bold'>Clear Cart</button>:""}
         {
        dataOfCart.map((items,index)=>{
                  return(
@@ -47,7 +49,7 @@ const Cart = () => {
                             </div>
                             <div>
                                 <img className='rounded-lg absolute border-2 border-gray-400' width={180} src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${items.card.info.imageId}`} alt="" />
-                                <button onClick={()=>handleRemoveItem(items.card.info.id)} className='px-4 relative top-[-15] py-1 border border-gray-400 rounded text-green-500 font-bold bg-gray-100'>Remove</button>
+                                <button onClick={()=>handleRemoveItem(items.card.info.id)} className='px-4 relative top-[-15] py-1 border border-gray-400 bg-red-500 rounded text-white-500 font-bold'>Remove</button>
                             </div>
                         </div>
                          

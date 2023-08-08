@@ -41,27 +41,16 @@ const Cards=()=>{
 
    const handleFilter=(order)=>{
       if(order===1){
-        
-        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.avgRating - b.info.avgRating);
-        setFilteredRestaurant(sortedRestaurantsAscending);
-
+         setFilteredRestaurant(allRestaurants);
       }
       else if(order===2){
         const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) =>  b.info.avgRating - a.info.avgRating);
         setFilteredRestaurant(sortedRestaurantsAscending);
       }
       else if(order===3){
-        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
-        setFilteredRestaurant(sortedRestaurantsAscending);
-      }
-
-      else if(order==4){
-        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
-        setFilteredRestaurant(sortedRestaurantsAscending);
-      }
-
-      else if(order==5){
-        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime );
+        const sortedRestaurantsAscending = filteredRestaurant.slice().sort((a, b) => {
+          return a.info.sla.deliveryTime - b.info.sla.deliveryTime;
+        } );
         setFilteredRestaurant(sortedRestaurantsAscending);
       }
 
@@ -72,28 +61,35 @@ const Cards=()=>{
          <div className='px-14 py-6'>
             <div className="py-2">
                
-              <div className='py-4 flex'>
-                 <input 
-                    className='border-2 border-gray-400' 
+            <div className='py-4 flex justify-between'>
+                
+              <div>
+                <input 
+                    className='border-2 border-gray-400 ' 
                     type='text' 
                     placeholder="search"
                     value={searchText}
                     onChange={(e)=>{
                         setSearchText(e.target.value);
+                        if(e.target.value==""){
+                          setFilteredRestaurant(allRestaurants);
+                        }
                     }}
+                   
                 />
                 <button 
-                   className='border-2 border-gray-400 mx-4' 
+                   className='mx-0 py-[2px] bg-green-400' 
                    onClick={(e)=>{
                           const data=filterRestaurant(searchText,allRestaurants);
                           setFilteredRestaurant(data);
                    }}>
                      Search
-                </button>
+                 </button>
+              </div>
 
 
 
-                <input 
+                {/* <input 
                     className='border-2 border-gray-400' 
                     type='text' 
                     placeholder="search"
@@ -101,23 +97,17 @@ const Cards=()=>{
                     onChange={(e)=>{
                         setUser({email:e.target.value});
                     }}
-                />
+                /> */}
 
           <div className='mx-8 flex gap-4'>
-               
-           <button onClick={()=>handleFilter(1)} className='bg-purple-300'>Popularity</button>
-           <button onClick={()=>handleFilter(2)}  className='bg-purple-300'>Rating: High to Low</button>
-           <button onClick={()=>handleFilter(3)}  className='bg-purple-300'>Delivery Time</button>
-           <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
-           <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button>
-           
+            <span className='bg-gray-300 rounded px-2 text-black'>Sort By</span>
+              <button onClick={()=>handleFilter(1)} className='bg-red-500 rounded px-2 text-white'>Popularity</button>
+              <button onClick={()=>handleFilter(2)}  className='bg-red-500 rounded px-2 text-white'>Rating: High to Low</button>
+              <button onClick={()=>handleFilter(3)}  className='bg-red-500 rounded px-2 text-white'>Delivery Time</button>
+              {/* <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
+              <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button> */}
           </div>
-
-
-
-
-
-              </div>
+    </div>
 
               <div className='grid grid-cols-4 gap-6 '>
                 

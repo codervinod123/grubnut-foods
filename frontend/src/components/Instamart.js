@@ -46,6 +46,11 @@ const Instamart = () => {
   return (
     <div className='flex p-4'>
        <div className='flex flex-col   w-full px-8 py-4'>
+  
+             <div className='flex justify-center items-center bg-gray-200 my-4 rounded'>
+                <h1 className='flex justify-center text-[30px] font-bold text-purple-500'>I have Implemented Lazy Loading over here</h1>
+             </div>
+
             <SectionCard setVisibility={()=>{setSectionVisibility({
              about:true,
              contact:false,

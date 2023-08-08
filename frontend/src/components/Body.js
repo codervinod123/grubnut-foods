@@ -22,7 +22,7 @@ const Body = () => {
          <div className='px-14 py-4'>
             <Offers />
          </div>
-         <Category/>
+         {/* <Category/> */}
          <Outlet/>
     </div>
   )
