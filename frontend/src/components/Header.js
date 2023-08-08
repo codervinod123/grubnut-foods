@@ -36,21 +36,21 @@ const Header = () => {
 
 
     const { user } = useContext(userContext);
-    console.log(user.email);
+    // console.log(user.email);
 
     const isOnline = useOnline();
 
     const [buttonBG, setButtonBG] = useState(false);
     const handleClick = () => {
         setButtonBG(!buttonBG);
-        console.log(buttonBG);
+        // console.log(buttonBG);
     }
 
     const [showCart, setShowCart] = useState(false);
 
     const handleCartClick = () => {
         setShowCart(!showCart);
-        console.log(showCart);
+        // console.log(showCart);
     }
 
 

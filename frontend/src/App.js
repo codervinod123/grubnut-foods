@@ -9,8 +9,8 @@ import PagenotFound from "./components/PagenotFound";
 
 import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
 import Cards from "./components/Cards";
-import Login from "./components/Login";
-import Register from "./components/Register";
+// import Login from "./components/Login";
+// import Register from "./components/Register";
 import UserContext from "./utils/userContext";
 
 import {Provider, Provider} from "react-redux";
@@ -98,15 +98,6 @@ const appRouter=createBrowserRouter([
                 }
             ]
          },
-         {
-            path:"login",
-            element:<Login/>
-         },
-         
-         {
-            path:"register",
-            element:<Register/>
-         }
         
       ]
    }

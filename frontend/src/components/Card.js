@@ -26,6 +26,7 @@ const Card=({item})=>{
                         <div className="relative bg-gray-500 p-1 flex  justify-end rounded-full top-[4px] left-[4px] cursor-pointer">
                           <AiTwotoneHeart onClick={handleAddToCart} className={`text-[25px] ${addToCart?"text-red-500":'text-white'}`}/>
                         </div>
+                        
                     </div>
 
                     <div>

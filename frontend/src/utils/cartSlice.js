@@ -18,7 +18,7 @@ const cartSlice=createSlice({
         // to remove any particular item in cart
           removeItem:(state,action)=>{
              
-               console.log(action.payload)
+              //  console.log(action.payload)
                 const arrayafterremoval=state.items.filter((item)=>{
                   return item.card.info.id !== action.payload;
                 });

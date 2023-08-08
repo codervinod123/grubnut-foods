@@ -10,7 +10,7 @@ import { addItem } from '../utils/cartSlice';
 
 const filterData=(searchText,restaurantDishes)=>{
    const restaurantName=restaurantDishes;
-   console.log(restaurantName);
+  //  console.log(restaurantName);
 }
 
 
@@ -20,7 +20,7 @@ const RestaurantDetails = () => {
   const [AddedToCart,setAddedToCart]=useState(false);
 
   const [searchText,setSearchText]=useState("");
-  console.log(searchText);
+  // console.log(searchText);
   const [restaurantDishes,setRestaurantDishes]=useState([]);
 
   
@@ -46,10 +46,10 @@ const RestaurantDetails = () => {
       const json=await data.json();
       const originalArray=json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
       const NewRestaurantDeatils=originalArray.slice(1);
-      console.log(NewRestaurantDeatils);
+      // console.log(NewRestaurantDeatils);
       setRestaurantDishes(NewRestaurantDeatils);
      } catch (error) {
-         console.log("Api can not be called"+error);
+        //  console.log("Api can not be called"+error);
      }
   }
 

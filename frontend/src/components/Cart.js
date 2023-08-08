@@ -15,12 +15,12 @@ const Cart = () => {
     const dispatch=useDispatch();
     const handleClearCart=()=>{
 
-      console.log("cleared the whole cart");
+      // console.log("cleared the whole cart");
        dispatch(clearCart());
     }
 
     const handleRemoveItem=(id)=>{
-       console.log(`remove one by one ${id}`);
+      //  console.log(`remove one by one ${id}`);
        dispatch(removeItem(id));
     }
 

@@ -16,14 +16,14 @@ const Cards=()=>{
    
     const {user,setUser}=useContext(UserContext);
     
-    console.log("initially rendered");
+    // console.log("initially rendered");
     const [searchText,setSearchText]=useState("");
     const [allRestaurants,setAllRestaurants]=useState([]);
     const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
      useEffect(()=>{
           getrestaurant();
-          console.log("useEffect runing")
+          // console.log("useEffect runing")
      },[]);
    
    const getrestaurant=async()=>{
@@ -32,9 +32,9 @@ const Cards=()=>{
            const json=await data.json();
            setAllRestaurants(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
            setFilteredRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
-            console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+            // console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
       } catch (error) {
-           console.log("Api can't be calles"+error);
+          //  console.log("Api can't be calles"+error);
       }
    }
 
