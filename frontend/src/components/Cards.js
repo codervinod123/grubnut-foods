@@ -104,8 +104,8 @@ const Cards=()=>{
               <button onClick={()=>handleFilter(1)} className='bg-red-500 rounded px-2 text-white'>Popularity</button>
               <button onClick={()=>handleFilter(2)}  className='bg-red-500 rounded px-2 text-white'>Rating: High to Low</button>
               <button onClick={()=>handleFilter(3)}  className='bg-red-500 rounded px-2 text-white'>Delivery Time</button>
-              {/* <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
-              <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button> */}
+              <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
+              <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button>
           </div>
     </div>
 
