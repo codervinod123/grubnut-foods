@@ -14,7 +14,7 @@ const About = () => {
         />
         <div className="bg-slate-900 text-white p-4 rounded-sm">
           <p className="pb-4 text-lg font-normal text-slate-300 text-center">
-            ReactJs | JavaScript | HTML5 | CSS3 | Tailwind CSS | Front End
+            C++ | ReactJs | JavaScript | HTML5 | CSS3 | Tailwind CSS | Front End
             Developer
           </p>
           <div className=" text-[2em] text-center w-full flex items-center justify-center mt-2">
