@@ -1,15 +1,51 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import Home from "../asset/home.svg"
 import Diamond from "../asset/diamond.svg"
 import Coin from "../asset/coin.webp"
 import Logo from "../asset/logo.svg";
 import "./global.css"
 import Footer from './Footer';
-import Login from './Login';
+
 
 import {Link} from "react-router-dom";
 
 const LandingPage = () => {
+
+
+      const [latitude,setLatitude]=useState();
+      const [longitude,setLongitude]=useState();
+      const [location,setLocation]=useState("");
+
+    
+      useEffect(()=>{
+
+          navigator.geolocation.getCurrentPosition((data)=>{
+            // console.log(data);
+            setLatitude(data.coords.latitude);
+            setLongitude(data.coords.longitude);
+            getLocation(data.coords.latitude,data.coords.longitude);
+          })
+      },[])
+
+      const getLocation=async(lat,lon)=>{
+        try {
+            console.log(lat);
+            const data=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+            const json=data.json();
+            console.log("jay");
+            setLocation(json.display_name);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
+    console.log(location);
+
+     
+
+
+   
+
     return (
         <>
             <div>
@@ -30,7 +66,8 @@ const LandingPage = () => {
                            
                         <ul className='flex gap-6 justify-end'>
                                 <Link to="/body"><li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Order in the App</li></Link>
-                                {/* <Link to="/login"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Sign in</li></Link> */}
+                                <Link to="/register"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Register</li></Link>
+                                <Link to="/login"> <li className='text-[20px] font-bold text-purple-500 cursor-pointer'>Login</li></Link>
                             </ul>
 
                         </div>

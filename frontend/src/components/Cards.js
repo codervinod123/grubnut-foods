@@ -21,6 +21,8 @@ const Cards=()=>{
     const [allRestaurants,setAllRestaurants]=useState([]);
     const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
+    // const [topRestaurant,setTopRestaurant]=useState([]);
+
      useEffect(()=>{
           getrestaurant();
           // console.log("useEffect runing")
@@ -33,6 +35,9 @@ const Cards=()=>{
            setAllRestaurants(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
            setFilteredRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
             // console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+            
+            // setTopRestaurant(json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants); 
+            // console.log(json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
       } catch (error) {
           //  console.log("Api can't be calles"+error);
       }
@@ -63,11 +68,11 @@ const Cards=()=>{
                
             <div className='py-4 flex justify-between'>
                 
-              <div>
+              <div className='flex gap-2'>
                 <input 
-                    className='border-2 border-gray-400 ' 
+                    className='border border-gray-400 px-4 py-1' 
                     type='text' 
-                    placeholder="search"
+                    placeholder="Search for Dishes"
                     value={searchText}
                     onChange={(e)=>{
                         setSearchText(e.target.value);
@@ -78,7 +83,7 @@ const Cards=()=>{
                    
                 />
                 <button 
-                   className='mx-0 py-[2px] bg-green-400' 
+                   className='mx-0 py-[2px] bg-green-400 rounded px-2 text-white' 
                    onClick={(e)=>{
                           const data=filterRestaurant(searchText,allRestaurants);
                           setFilteredRestaurant(data);
@@ -101,13 +106,45 @@ const Cards=()=>{
 
           <div className='mx-8 flex gap-4'>
             <span className='bg-gray-300 rounded px-2 text-black'>Sort By</span>
-              <button onClick={()=>handleFilter(1)} className='bg-red-500 rounded px-2 text-white'>Popularity</button>
-              <button onClick={()=>handleFilter(2)}  className='bg-red-500 rounded px-2 text-white'>Rating: High to Low</button>
-              <button onClick={()=>handleFilter(3)}  className='bg-red-500 rounded px-2 text-white'>Delivery Time</button>
-              <button onClick={()=>handleFilter(4)}  className='bg-purple-300'>Cost: Low to High</button>
-              <button onClick={()=>handleFilter(5)} className='bg-purple-300'>Cost: High to Low</button>
+              <button onClick={()=>handleFilter(1)} className='bg-red-500 rounded px-2 text-white hover:bg-green-500 transition-all duration-300'>Popularity</button>
+              <button onClick={()=>handleFilter(2)}  className='bg-red-500 rounded px-2 text-white hover:bg-green-500 transition-all duration-300'>Rating: High to Low</button>
+              <button onClick={()=>handleFilter(3)}  className='bg-red-500 rounded px-2 text-white hover:bg-green-500 transition-all duration-300'>Delivery Time</button>
           </div>
     </div>
+
+
+
+               {/* <div className='py-4'>
+                   <div className='flex justify-between items-center py-4'>
+                      <div>
+                         <p className='text-[25px] font-bold text-gray-700'>Restaurants which deliver food Near you</p>
+                      </div>
+                      <div className='flex gap-3'>
+                          <button className='text-[30px] text-gray-700  rounded-full'>→</button>
+                          <button className='text-[30px] text-gray-700 rounded-full'>←</button>
+                      </div>
+                   </div>
+
+                   <div className='border border-purple-600 rounded p-3'>
+                     <div className='flex  gap-6 '>
+                     
+                     {topRestaurant.map((item)=>{
+                      return ( 
+                       
+                            <div key={item.info.id} className='w-[400px]'>
+                               <Link ><Card item={item}/> </Link>
+                            </div>
+                    
+                      )
+                    })}
+                      
+                      </div> 
+                   </div>
+
+               </div> */}
+
+
+
 
               <div className='grid grid-cols-4 gap-6 '>
                 

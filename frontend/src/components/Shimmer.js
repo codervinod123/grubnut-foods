@@ -4,7 +4,15 @@ const ShimmerCard=()=>{
     return(
         <>
           <div className='px-14 pb-12'>
-              <div><div className='px-12 h-[30px] w-[50%] bg-gray-300 rounded-sm'> </div></div>
+              <div className='flex justify-between'>
+                 <div className='px-12 h-[30px] w-[50%] bg-gray-300 rounded-sm'> </div>
+                 <div className='flex gap-3'>
+                    <div className='px-12 h-[30px] w-[30px] bg-gray-300 rounded-sm'> </div>
+                    <div className='px-12 h-[30px] w-[30px] bg-gray-300 rounded-sm'> </div>
+                    <div className='px-12 h-[30px] w-[30px] bg-gray-300 rounded-sm'> </div>
+                    <div className='px-12 h-[30px] w-[30px] bg-gray-300 rounded-sm'> </div>
+                 </div>
+              </div>
               
               <div className='grid grid-cols-4 pt-4 gap-4'>
                   <div className='flex flex-col gap-4'>

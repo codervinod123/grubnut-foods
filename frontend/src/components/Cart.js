@@ -9,9 +9,10 @@ import EmptyCart from './EmptyCart'
 const Cart = () => {
 
     const dataOfCart=useSelector(store=>store.cart.items);
-    
     const [cartItems,setCartItems]=useState(dataOfCart);
 
+    // const [totalPrice,setTotalPrice]=useState(0);
+    var totalPrice=0;
     const dispatch=useDispatch();
     const handleClearCart=()=>{
 
@@ -30,6 +31,8 @@ const Cart = () => {
       {dataOfCart.length>0?<button onClick={()=>handleClearCart()} className='px-2 mx-32 bg-red-500  py-1 rounded text-white font-bold'>Clear Cart</button>:""}
         {
        dataOfCart.map((items,index)=>{
+        // setTotalPrice(totalPrice+items.card.info.price/100);
+        totalPrice=totalPrice+items.card.info.price/100;
                  return(
 
                      items.card.info.imageId &&
@@ -56,7 +59,16 @@ const Cart = () => {
                        </div>
                     )
                     })
-                }    
+                }
+
+                <div className='flex justify-between px-32 py-4 bg-blue-900'>
+                   <p className='text-white font-bold'>Total</p>
+                   <p className='text-white font-bold'>₹ {totalPrice}</p>
+                </div>
+                <div className='flex justify-center px-32 py-4 bg-gray-900'>
+                <button className='text-white font-bold'>Checkout</button>
+                </div>
+
     </div>
   )
 }

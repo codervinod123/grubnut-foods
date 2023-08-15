@@ -23,6 +23,10 @@ const RestaurantDetails = () => {
   // console.log(searchText);
   const [restaurantDishes,setRestaurantDishes]=useState([]);
 
+  // restauran name and details for card
+
+  const [restaurant,setRestaurant]=useState();
+
   
   useEffect(()=>{
      getRestaurantDetails();
@@ -44,6 +48,11 @@ const RestaurantDetails = () => {
      try {
       const data=await fetch(restaurantDetailsURL+id);
       const json=await data.json();
+      
+      
+      setRestaurant(json.data.cards[0].card.card.info);
+     console.log(json.data.cards[0].card.card.info);
+
       const originalArray=json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
       const NewRestaurantDeatils=originalArray.slice(1);
       // console.log(NewRestaurantDeatils);
@@ -76,23 +85,23 @@ const RestaurantDetails = () => {
               <div>
                 <img width={300} src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bzupoiynxjbgogvumixa" alt="" />
               </div>
-              <div className='flex flex-col gap-14 items-center'>
+              <div className='flex flex-col gap-14'>
 
                 <div>
-                  <p className='text-xl font-bold'>Leon's - Burgers & Wings (Leon Grill)</p>
-                  <p className='text-lg pt-4'>American Snaxks</p>
+                  <p className='text-xl font-bold'>{restaurant.name}</p>
+                  <p className='text-lg pt-4'>{restaurant.cuisines.join(" ")}</p>
                 </div>
   
-                <div className='flex gap-12'>
+                <div className='flex gap-10'>
                  <div>
-                    <h1>4.3 Satrs</h1>
-                    <h1>10K+ Ratings</h1>
+                    <h1>{restaurant.avgRating} Satrs</h1>
+                    <h1>{restaurant.totalRatings}+ Rating</h1>
                  </div>
                  <div className='border-r-2 border-l-2 border-white px-6'>
                     <h1>Delivery Time</h1>
                  </div>
                  <div>
-                    <h1>200</h1>
+                    <h1>{restaurant.costForTwo/100}</h1>
                     <h1>Cost for two</h1>
                  </div>
               </div>
@@ -131,7 +140,9 @@ const RestaurantDetails = () => {
                                </div>
 
                                <div className='py-3'>
-                                 <p className='text-sm text-gray-500'>{items.card.info.description}</p>
+                                 <p className='text-sm text-gray-500'>
+                                    { items.card.info.description }
+                                 </p>
                                </div>
                                
                             </div>

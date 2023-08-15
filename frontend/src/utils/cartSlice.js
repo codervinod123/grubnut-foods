@@ -28,7 +28,8 @@ const cartSlice=createSlice({
          // to lear whole cart 
           clearCart:(state)=>{
             state.items=[];
-          }
+          },
+
     }
 })
 

@@ -10,10 +10,9 @@ import {Outlet} from "react-router-dom"
 
 
 
-
-
 const Body = () => {
-
+ 
+  
   const [shimmer,setShimmer] = useState(true);
  
   return (

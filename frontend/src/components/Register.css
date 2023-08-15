@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: #525560;
+    background: #fa5086;
     font-family: 'Fira Sans', sans-serif;
 }
 
@@ -14,10 +14,8 @@
     height: 100%;
     margin: 2% 10%;
     border-radius: 10px;
-    background: green;
+    background: rgb(69, 106, 228);
     padding: 2% 5%;
-    /* background: url("../Asset/mb1.jpg"); */
-    /* background-size:cover; */
      
 }
 
@@ -27,12 +25,11 @@
     display: flex;
     flex-direction: column;
     /* width: 0%; */
-    color: aliceblue;
+    color: black;
     gap: 1.4rem;
 }
 
 .from span a{
-    color: rgb(32, 131, 218);
     text-decoration: none;
 }
 
@@ -46,19 +43,20 @@ form > input{
     padding: 10px 30px;
     border: 1px solid transparent;
     border-radius: 10px;
-    background: #9a9da8;
-    color: azure;
+    background: white;
+    
     outline: none;
     font-size: 14px;
 }
 
 ::placeholder{
-    color: azure;
+    color: black;
 }
 
 .name{
     display: flex;
     gap: 1rem;
+    color: black;
 }
 
 
@@ -67,8 +65,8 @@ form > input{
     padding: 10px 30px;
     border: 1px solid transparent;
     border-radius: 10px;
-    background: #9a9da8;
-    color: rgb(249, 246, 246);
+  
+    color: black;
     outline: none;
    font-size: 14px;
   
@@ -88,7 +86,7 @@ form > input{
     padding: 10px 25px;
     border-radius: 20px;
     border: 1px solid transparent;
-    color: aliceblue;
+    color: black;
 }
 
 .change_pass{
@@ -109,7 +107,7 @@ form > input{
 
 
 .create_acc:hover{
-    background: #525560;
+    background: #e017da;
     border-color: rgb(253, 251, 249);
 }
 .lae

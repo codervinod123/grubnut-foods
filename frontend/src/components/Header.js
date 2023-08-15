@@ -7,6 +7,7 @@ import { BsCart3 } from "react-icons/bs";
 
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { GrFormSearch } from "react-icons/gr";
+import { FaUserCircle } from "react-icons/fa";
 
 import useOnline from "../utils/useIsOnline";
 
@@ -32,7 +33,8 @@ const Title = () => {
 const Header = () => {
 
     const cartItem = useSelector(store => store.cart.items);
-
+    const user1=useSelector(store=>store.user.user);
+    console.log("user is"+user1);
 
 
     const { user } = useContext(userContext);
@@ -95,6 +97,7 @@ const Header = () => {
                      <Link to="help"><li className='mr-4 font-semibold'>Help</li></Link>
                      <Link to="instamart"><li className='mr-4 font-semibold'>Instamart</li></Link>
                      <li className='mr-4 font-semibold'>Location</li>
+                     {/* <Link to="/register"><li className='mr-4 font-semibold'>Register</li></Link> */}
                      <Link to="cart">
                         
                         <li className='mr-4 flex justify-center items-center'>
@@ -108,6 +111,11 @@ const Header = () => {
                         </li>
                       
                       </Link>
+
+                      <button>
+                         <FaUserCircle className='text-[26px] text-green-700'/>
+                      </button>
+
                      {/* <li className='text-sm text-gray-400 mr-4'>{isOnline ? "online" : "offline"}</li> */}
                   </ul>
                </div>

@@ -314,7 +314,9 @@ const Footer = () => {
                 </div>
 
 
-
+                <div className='bg-blue-900'>
+                    <p className='flex justify-center py-2 font-bold text-white'>© 2023 made by Vinod 🎉</p>
+                </div>
 
 
 

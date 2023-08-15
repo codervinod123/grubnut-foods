@@ -18,6 +18,8 @@ import store from "./utils/store";
 import Cart from "./components/Cart";
 import About from "./components/About";
 import Help from "./components/Help";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 
 
@@ -98,8 +100,17 @@ const appRouter=createBrowserRouter([
                 }
             ]
          },
+         
         
       ]
+   },
+   {
+      path:"/register",
+      element:<Register/>
+   },
+   {
+      path:"/login",
+      element:<Login/>
    }
 ])
 
